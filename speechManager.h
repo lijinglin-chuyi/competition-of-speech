@@ -9,6 +9,11 @@
 #include <vector>
 #include <map>
 #include "speaker.h"
+#include <fstream>
+#include <deque>
+#include <algorithm>
+#include <numeric>
+#include <functional>
 using namespace std;
 
 class SpeechManager
@@ -38,4 +43,47 @@ public:
 
 	//初始化成员属性
 	void initSpeech();
+
+	//创建12名选手
+	void createSpeaker();
+
+	//开始比赛，比赛整个流程控制函数
+	void startSpeech();
+
+	//比赛抽签
+	void speechDraw();
+
+	//比赛
+	void speechContest();
+
+	//显示得分
+	void showScore();
+
+	//保存数据
+	void saveRecord();
+
+	//判断文件是否为空
+	bool fileIsEmpty;
+
+	//存放往届记录的容器
+	map<int, vector<string>>m_Record;
+
+	//读取往届记录
+	void loadRecord();
+
+	//显示往届记录
+	void showRecord();
+
+	//清空记录
+	void clearRecord();
 };
+
+class MyPrint
+{
+public:
+	void operator()(int val)
+	{
+		cout << val << " ";
+	}
+};
+
